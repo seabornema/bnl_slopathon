@@ -3,31 +3,26 @@
 set -e
 
 CXX=g++
-CXXFLAGS="-std=c++17 -Wall -Wextra -pedantic -O2"
-
-OUTPUT="chernobyl_roof_sim"
+CXXFLAGS="-std=c++17 -Wall -Wextra -pedantic -O3"
 
 HEADER_DIR="include/header"
 SOURCE_DIR="include/source"
 
+OUTPUT="train_bulldozer"
+
 SOURCES="
-main.cpp
+train.cpp
 ${SOURCE_DIR}/Circle.cpp
 ${SOURCE_DIR}/Simulation.cpp
-${SOURCE_DIR}/Render.cpp
-${SOURCE_DIR}/InputHandler.cpp
 ${SOURCE_DIR}/Bulldozer.cpp
 ${SOURCE_DIR}/NeuralNetwork.cpp
-${SOURCE_DIR}/glad.c
 "
 
 INCLUDES="-I${HEADER_DIR} -Iinclude"
 
-LIBS="-lglfw -ldl -lGL"
+echo "Building ${OUTPUT} with -O3..."
 
-echo "Building ${OUTPUT}..."
-
-${CXX} ${CXXFLAGS} ${INCLUDES} ${SOURCES} ${LIBS} -o ${OUTPUT}
+${CXX} ${CXXFLAGS} ${INCLUDES} ${SOURCES} -o ${OUTPUT}
 
 echo "Build complete."
 echo "Run with: ./${OUTPUT}"

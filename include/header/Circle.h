@@ -3,6 +3,12 @@
 
 #include <cmath>
 
+enum class CircleMaterial
+{
+    ConcreteRubble,
+    GraphiteRodEnd
+};
+
 struct Vec2
 {
     float x;
@@ -95,22 +101,27 @@ struct Circle
     float radius;
     float mass;
 
+    CircleMaterial material;
+
     Circle()
         : position(),
           velocity(),
           radius(1.0f),
-          mass(1.0f)
+          mass(1.0f),
+          material(CircleMaterial::ConcreteRubble)
     {
     }
 
     Circle(const Vec2& startPosition,
            const Vec2& startVelocity,
            float circleRadius,
-           float circleMass)
+           float circleMass,
+           CircleMaterial circleMaterial)
         : position(startPosition),
           velocity(startVelocity),
           radius(circleRadius),
-          mass(circleMass)
+          mass(circleMass),
+          material(circleMaterial)
     {
     }
 };

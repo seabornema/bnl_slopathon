@@ -1,6 +1,7 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
+
 namespace Config
 {
     // ------------------------------------------------------------
@@ -86,6 +87,89 @@ namespace Config
     constexpr float BOUNDARY_RED = 0.75f;
     constexpr float BOUNDARY_GREEN = 0.75f;
     constexpr float BOUNDARY_BLUE = 0.75f;
+    // ------------------------------------------------------------
+// Material variation
+// ------------------------------------------------------------
+
+// Fraction of circles that represent graphite rod ends.
+// 0.18 means around 18 percent of generated pieces.
+constexpr int GRAPHITE_NUMBER = 10;
+constexpr float BULLDOZER_BLADE_THICKNESS = 0.018f;
+constexpr float BULLDOZER_BLADE_PUSH = 0.08f;
+
+
+constexpr float BULLDOZER_MASS = 1.0f;
+constexpr float BULLDOZER_RECOIL_MULTIPLIER = 0.35f;
+
+constexpr float BULLDOZER_LOAD_DRAG = 8.0f;
+
+// Extra slowdown per object currently touching the blade.
+constexpr float BULLDOZER_LOAD_DRAG_PER_CONTACT = 2.0f;
+
+// Graphite rod ends are slightly smaller and denser.
+constexpr float MIN_GRAPHITE_RADIUS = 0.018f;
+constexpr float MAX_GRAPHITE_RADIUS = 0.040f;
+
+constexpr float CONCRETE_DENSITY = 1.0f;
+constexpr float GRAPHITE_DENSITY = 1.8f;
+
+// Graphite slides a bit more easily than rough concrete rubble.
+constexpr float CONCRETE_FRICTION_MULTIPLIER = 1.0f;
+constexpr float GRAPHITE_FRICTION_MULTIPLIER = 0.65f;
+
+// Graphite pieces bounce slightly less.
+constexpr float CONCRETE_RESTITUTION_MULTIPLIER = 1.0f;
+constexpr float GRAPHITE_RESTITUTION_MULTIPLIER = 0.75f;
+
+// Graphite rendering color
+constexpr float GRAPHITE_RED = 0.58f;
+constexpr float GRAPHITE_GREEN = 0.08f;
+constexpr float GRAPHITE_BLUE = 0.475f;
+// ------------------------------------------------------------
+// Bulldozer settings
+// ------------------------------------------------------------
+
+constexpr float BULLDOZER_RADIUS = 0.06f;
+constexpr float BULLDOZER_BLADE_WIDTH = 0.18f;
+constexpr float BULLDOZER_BLADE_OFFSET = 0.08f;
+
+constexpr float BULLDOZER_START_X = 0.0f;
+constexpr float BULLDOZER_START_Y = -0.82f;
+
+constexpr float BULLDOZER_MAX_SPEED = 0.45f;
+constexpr float BULLDOZER_ACCELERATION = 0.75f;
+constexpr float BULLDOZER_ROTATION_SPEED = 2.2f;
+constexpr float BULLDOZER_FRICTION = 0.85f;
+
+// ------------------------------------------------------------
+// Neural network input/output settings
+// ------------------------------------------------------------
+
+// Sightlines + rotation x/y + velocity x/y + acceleration x/y
+constexpr int SIGHTLINE_COUNT = 9;
+constexpr int NETWORK_INPUT_COUNT = SIGHTLINE_COUNT + 6;
+
+constexpr int NETWORK_HIDDEN_COUNT = 16;
+constexpr int NETWORK_OUTPUT_COUNT = 2;
+
+// Output 0: rotation command, -1 to 1
+// Output 1: forward/backward command, -1 to 1
+
+constexpr float SIGHTLINE_LENGTH = 0.75f;
+constexpr float SIGHTLINE_FOV_RADIANS = 2.2f;
+
+// ------------------------------------------------------------
+// Bulldozer rendering
+// ------------------------------------------------------------
+
+constexpr float BULLDOZER_RED = 0.85f;
+constexpr float BULLDOZER_GREEN = 0.70f;
+constexpr float BULLDOZER_BLUE = 0.20f;
+
+constexpr float BULLDOZER_BLADE_RED = 0.95f;
+constexpr float BULLDOZER_BLADE_GREEN = 0.95f;
+constexpr float BULLDOZER_BLADE_BLUE = 0.80f;
+
 }
 
 #endif

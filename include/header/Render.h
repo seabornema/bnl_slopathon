@@ -1,21 +1,22 @@
-#ifndef RENDERER_H
-#define RENDERER_H
+#ifndef RENDER_H
+#define RENDER_H
 
 #include <vector>
 
 #include <glad/glad.h>
 
-#include "Simulation.h"
+#include "Bulldozer.h"
 #include "Circle.h"
+#include "Simulation.h"
 
-class Renderer
+class Render
 {
 public:
-    Renderer();
-    ~Renderer();
+    Render();
+    ~Render();
 
-    Renderer(const Renderer&) = delete;
-    Renderer& operator=(const Renderer&) = delete;
+    Render(const Render&) = delete;
+    Render& operator=(const Render&) = delete;
 
     void render(const Simulation& simulation);
 
@@ -35,6 +36,11 @@ private:
     void drawRoof();
     void drawBoundary();
     void drawCircle(const Circle& circle);
+    void drawCircleOutline(const Circle& circle);
+
+    void drawBulldozer(const Bulldozer& bulldozer);
+    void drawBulldozerBody(const Bulldozer& bulldozer);
+    void drawBulldozerBlade(const Bulldozer& bulldozer);
 
     void uploadAndDraw(const std::vector<float>& vertices, GLenum drawMode);
 

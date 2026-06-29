@@ -22,7 +22,8 @@ static void framebufferSizeCallback(GLFWwindow* window, int width, int height)
     glViewport(0, 0, width, height);
 }
 
-int main()
+
+int main(int argc, char** argv)
 {
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
@@ -68,8 +69,18 @@ int main()
 
     glViewport(0, 0, Config::WINDOW_WIDTH, Config::WINDOW_HEIGHT);
 
-    Renderer renderer;
-    Simulation simulation;
+    Render renderer;
+Simulation simulation;
+
+if (argc >= 2)
+{
+    simulation.loadNeuralNetwork(argv[1]);
+}
+else
+{
+    std::cout << "No neural network CSV provided.\n";
+    std::cout << "Usage: ./chernobyl_roof_sim weights.csv\n";
+}
 
     simulation.initialize();
 
